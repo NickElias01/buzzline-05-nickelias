@@ -150,28 +150,32 @@ def main() -> None:
         logger.error(f"ERROR: Failed to delete live data file: {e}")
         sys.exit(2)
 
-    logger.info("STEP 4. Try to create a Kafka producer and topic.")
-    producer = None
-
-    try:
-        verify_services()
-        producer = KafkaProducer(
-            bootstrap_servers=kafka_server,
-            value_serializer=lambda x: json.dumps(x).encode("utf-8"),
-        )
-        logger.info(f"Kafka producer connected to {kafka_server}")
-    except Exception as e:
-        logger.warning(f"WARNING: Kafka connection failed: {e}")
+    ''' Using live data file instead of Kafka,
+        so commenting out the Kafka producer and topic creation.
+        
+        logger.info("STEP 4. Try to create a Kafka producer and topic.")
         producer = None
 
-    if producer:
         try:
-            create_kafka_topic(topic)
-            logger.info(f"Kafka topic '{topic}' is ready.")
+            verify_services()
+            producer = KafkaProducer(
+                bootstrap_servers=kafka_server,
+                value_serializer=lambda x: json.dumps(x).encode("utf-8"),
+            )
+            logger.info(f"Kafka producer connected to {kafka_server}")
         except Exception as e:
-            logger.warning(f"WARNING: Failed to create or verify topic '{topic}': {e}")
+            logger.warning(f"WARNING: Kafka connection failed: {e}")
             producer = None
 
+        if producer:
+            try:
+                create_kafka_topic(topic)
+                logger.info(f"Kafka topic '{topic}' is ready.")
+            except Exception as e:
+                logger.warning(f"WARNING: Failed to create or verify topic '{topic}': {e}")
+                producer = None
+'''
+            
     logger.info("STEP 5. Generate messages continuously.")
     try:
         for message in generate_messages():
@@ -181,10 +185,10 @@ def main() -> None:
                 f.write(json.dumps(message) + "\n")
                 logger.info(f"STEP 4a Wrote message to file: {message}")
 
-            # Send to Kafka if available
-            if producer:
-                producer.send(topic, value=message)
-                logger.info(f"STEP 4b Sent message to Kafka topic '{topic}': {message}")
+            # Send to Kafka if available - Commented out for now
+            # if producer:
+            #    producer.send(topic, value=message)
+            #    logger.info(f"STEP 4b Sent message to Kafka topic '{topic}': {message}")
 
             time.sleep(interval_secs)
 
@@ -193,9 +197,9 @@ def main() -> None:
     except Exception as e:
         logger.error(f"ERROR: Unexpected error: {e}")
     finally:
-        if producer:
-            producer.close()
-            logger.info("Kafka producer closed.")
+        # if producer:
+        #    producer.close()
+        #    logger.info("Kafka producer closed.")
         logger.info("TRY/FINALLY: Producer shutting down.")
 
 
