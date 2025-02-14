@@ -95,7 +95,6 @@ def append_to_csv(processed_message):
                 processed_message["category"],
                 processed_message["sentiment"],
                 processed_message["keyword_mentioned"],
-                processed_message["message_length"],
             ])
     except Exception as e:
         logger.error(f"ERROR: Failed to write to CSV file: {e}")
@@ -125,8 +124,7 @@ def init_db(db_path: pathlib.Path):
                     timestamp TEXT,
                     category TEXT,
                     sentiment REAL,
-                    keyword_mentioned TEXT,
-                    message_length INTEGER
+                    keyword_mentioned TEXT                   
                 )
             """
             )
@@ -179,8 +177,7 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
                     message["category"],
                     message["sentiment"],
                     message["keyword_mentioned"],
-                    message["message_length"],
-                ),
+                                          ),
             )
 
             # Update sentiment insights
