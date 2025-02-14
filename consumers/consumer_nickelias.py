@@ -29,6 +29,8 @@ import pathlib
 import sys
 import time
 import csv
+import sqlite3
+import os
 
 # import from local modules
 import utils.utils_config as config
@@ -45,7 +47,7 @@ CSV_FILE_PATH = "live_data.csv"
 # Function to process a single message
 # #####################################
 
-def process_message(message: str) -> None:
+def process_message(message: dict) -> None:
     """
     Process and transform a single JSON message.
     Converts message fields to appropriate data types.
@@ -74,27 +76,136 @@ def process_message(message: str) -> None:
 # Function to write data to CSV
 # #####################################
 
-def write_to_csv(processed_message):
-    """Append new messages to a CSV file."""
-    file_exists = pathlib.Path(CSV_FILE_PATH).exists()
+def append_to_csv(processed_message):
+    """
+    Append processed message to a CSV file for logging.
+    """
+    file_exists = os.path.exists(CSV_FILE_PATH)
     
-    with open(CSV_FILE_PATH, "a", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=[
-            "message", "author", "timestamp", "category", 
-            "sentiment", "keyword_mentioned", "message_length"
-        ])
-        
-        # Write headers if file is new
-        if not file_exists:
-            writer.writeheader()
-        
-        writer.writerow(processed_message)
-        
+    try:
+        with open(CSV_FILE_PATH, mode="a", newline="") as file:
+            writer = csv.writer(file)
+            # Write header only if file doesn't exist
+            if not file_exists:
+                writer.writerow(["message", "author", "timestamp", "category", "sentiment", "keyword_mentioned", "message_length"])
+            writer.writerow([
+                processed_message["message"],
+                processed_message["author"],
+                processed_message["timestamp"],
+                processed_message["category"],
+                processed_message["sentiment"],
+                processed_message["keyword_mentioned"],
+                processed_message["message_length"],
+            ])
+    except Exception as e:
+        logger.error(f"ERROR: Failed to write to CSV file: {e}")
+
+
+
+#####################################
+# Function to initialize the database
+#####################################
+
+def init_db(db_path: pathlib.Path):
+    """
+    Initialize the SQLite database with message storage and sentiment insights.
+    """
+    try:
+        os.makedirs(os.path.dirname(db_path), exist_ok=True)
+
+        with sqlite3.connect(db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("DROP TABLE IF EXISTS streamed_messages;")
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS streamed_messages (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    message TEXT,
+                    author TEXT,
+                    timestamp TEXT,
+                    category TEXT,
+                    sentiment REAL,
+                    keyword_mentioned TEXT,
+                    message_length INTEGER
+                )
+            """
+            )
+            
+            # New table for sentiment insights
+            cursor.execute(
+                """
+                CREATE TABLE IF NOT EXISTS sentiment_insights (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    average_sentiment REAL,
+                    total_messages INTEGER,
+                    last_updated TEXT
+                )
+            """
+            )
+
+            # Ensure at least one row exists for tracking insights
+            cursor.execute("SELECT COUNT(*) FROM sentiment_insights")
+            if cursor.fetchone()[0] == 0:
+                cursor.execute(
+                    "INSERT INTO sentiment_insights (average_sentiment, total_messages, last_updated) VALUES (0.0, 0, datetime('now'))"
+                )
+
+            conn.commit()
+    except Exception as e:
+        logger.error(f"ERROR: Failed to initialize database: {e}")
+
+
+#####################################
+# Function to insert a processed message into the database
+#####################################
+
+def insert_message(message: dict, db_path: pathlib.Path) -> None:
+    """
+    Insert a single processed message into the database and update sentiment insights.
+    """
+    try:
+        with sqlite3.connect(db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute(
+                """
+                INSERT INTO streamed_messages (
+                    message, author, timestamp, category, sentiment, keyword_mentioned, message_length
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    message["message"],
+                    message["author"],
+                    message["timestamp"],
+                    message["category"],
+                    message["sentiment"],
+                    message["keyword_mentioned"],
+                    message["message_length"],
+                ),
+            )
+
+            # Update sentiment insights
+            cursor.execute("SELECT COUNT(*), AVG(sentiment) FROM streamed_messages")
+            total_messages, avg_sentiment = cursor.fetchone()
+
+            # Update sentiment insights
+            cursor.execute(
+                """
+                UPDATE sentiment_insights 
+                SET average_sentiment = ?, total_messages = ?, last_updated = datetime('now')
+                WHERE id = (SELECT id FROM sentiment_insights ORDER BY last_updated DESC LIMIT 1)
+                """,
+                (avg_sentiment, total_messages),
+            )
+
+            conn.commit()
+    except Exception as e:
+        logger.error(f"ERROR: Failed to insert message and update sentiment insights: {e}")
+
+
 
 #####################################
 # Consume Messages from Live Data File
 #####################################
-
 
 def consume_messages_from_file(live_data_path, sql_path, interval_secs, last_position):
     """
@@ -125,11 +236,11 @@ def consume_messages_from_file(live_data_path, sql_path, interval_secs, last_pos
             with open(live_data_path, "r") as file:
                 # Move to the last read position
                 file.seek(last_position)
-                for line in file:
-                    # If we strip whitespace and there is content
-                    if line.strip():
+                new_data_found = False  # Track if new messages were read
 
-                        # Use json.loads to parse the stripped line
+                for line in file:
+                    if line.strip():  # If there's a non-empty line
+                        new_data_found = True  # New message detected
                         message = json.loads(line.strip())
 
                         # Call our process_message function
@@ -138,24 +249,21 @@ def consume_messages_from_file(live_data_path, sql_path, interval_secs, last_pos
                         # If we have a processed message, insert it into the database
                         if processed_message:
                             insert_message(processed_message, sql_path)
-                            write_to_csv(processed_message)  # Append to CSV
+                            append_to_csv(processed_message)  # Append to CSV
 
                 # Update the last position that's been read to the current file position
                 last_position = file.tell()
 
-                # Return the last position to be used in the next iteration
-                return last_position
+            if not new_data_found:
+                logger.info("No new messages found, sleeping...")
+                time.sleep(interval_secs)  # Avoids CPU overload
 
         except FileNotFoundError:
-            logger.error(f"ERROR: Live data file not found at {live_data_path}.")
-            sys.exit(10)
+            logger.error(f"ERROR: Live data file not found at {live_data_path}. Retrying in {interval_secs} seconds.")
+            time.sleep(interval_secs)  # Prevents tight error loop
         except Exception as e:
             logger.error(f"ERROR: Error reading from live data file: {e}")
-            sys.exit(11)
-
-        time.sleep(interval_secs)
-
-
+            time.sleep(interval_secs)  # Ensures a delay even on failure
 
 
 

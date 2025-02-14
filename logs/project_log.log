@@ -1,0 +1,305 @@
+2025-02-14 15:45:42.106 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-14 15:45:42.108 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-14 15:45:42.108 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-14 15:45:42.108 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-14 15:45:42.109 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-14 15:45:42.109 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-14 15:45:42.109 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-14 15:45:42.112 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-14 15:45:42.113 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\drumm\Documents\Streaming Data\buzzline-05-nickelias\data
+2025-02-14 15:45:42.113 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\drumm\Documents\Streaming Data\buzzline-05-nickelias\data\project_live.json
+2025-02-14 15:45:42.113 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-14 15:45:42.114 | INFO     | __main__:main:145 - Deleted existing live data file.
+2025-02-14 15:45:42.115 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-14 15:45:42.116 | INFO     | __main__:main:179 - STEP 5. Generate messages continuously.
+2025-02-14 15:45:42.116 | INFO     | __main__:main:182 - {'message': 'I just loved JavaScript! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:42', 'category': 'tech', 'sentiment': 1.0, 'keyword_mentioned': 'JavaScript', 'message_length': 39}
+2025-02-14 15:45:42.117 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just loved JavaScript! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:42', 'category': 'tech', 'sentiment': 1.0, 'keyword_mentioned': 'JavaScript', 'message_length': 39}
+2025-02-14 15:45:47.118 | INFO     | __main__:main:182 - {'message': 'I just saw a trick! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:47', 'category': 'other', 'sentiment': 0.54, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:45:47.120 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw a trick! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:47', 'category': 'other', 'sentiment': 0.54, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:45:50.041 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-14 15:45:50.042 | INFO     | __main__:main:282 - Starting Consumer to run continuously.
+2025-02-14 15:45:50.042 | INFO     | __main__:main:283 - Things can fail or get interrupted, so use a try block.
+2025-02-14 15:45:50.042 | INFO     | __main__:main:284 - Moved .env variables into a utils config module.
+2025-02-14 15:45:50.042 | INFO     | __main__:main:286 - STEP 1. Read environment variables using new config functions.
+2025-02-14 15:45:50.042 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-14 15:45:50.043 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\drumm\Documents\Streaming Data\buzzline-05-nickelias\data
+2025-02-14 15:45:50.043 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\drumm\Documents\Streaming Data\buzzline-05-nickelias\data\project_live.json
+2025-02-14 15:45:50.043 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\drumm\Documents\Streaming Data\buzzline-05-nickelias\data
+2025-02-14 15:45:50.043 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\drumm\Documents\Streaming Data\buzzline-05-nickelias\data\buzz.sqlite
+2025-02-14 15:45:50.043 | INFO     | __main__:main:291 - SUCCESS: Read environment variables.
+2025-02-14 15:45:50.043 | INFO     | __main__:main:296 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-14 15:45:50.044 | INFO     | __main__:main:300 - SUCCESS: Deleted database file.
+2025-02-14 15:45:50.045 | INFO     | __main__:main:305 - STEP 3. Initialize a new database with an empty table.
+2025-02-14 15:45:50.068 | INFO     | __main__:main:312 - STEP 4. Begin consuming and storing messages.
+2025-02-14 15:45:50.068 | INFO     | __main__:consume_messages_from_file:221 - Called consume_messages_from_file() with:
+2025-02-14 15:45:50.068 | INFO     | __main__:consume_messages_from_file:222 -    live_data_path=WindowsPath('C:/Users/drumm/Documents/Streaming Data/buzzline-05-nickelias/data/project_live.json')
+2025-02-14 15:45:50.068 | INFO     | __main__:consume_messages_from_file:223 -    sql_path=WindowsPath('C:/Users/drumm/Documents/Streaming Data/buzzline-05-nickelias/data/buzz.sqlite')
+2025-02-14 15:45:50.069 | INFO     | __main__:consume_messages_from_file:224 -    interval_secs=5
+2025-02-14 15:45:50.069 | INFO     | __main__:consume_messages_from_file:225 -    last_position=0
+2025-02-14 15:45:50.069 | INFO     | __main__:consume_messages_from_file:227 - 1. Initialize the database.
+2025-02-14 15:45:50.085 | INFO     | __main__:consume_messages_from_file:230 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-14 15:45:50.085 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 0.
+2025-02-14 15:45:50.095 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just loved JavaScript! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:42', 'category': 'tech', 'sentiment': 1.0, 'keyword_mentioned': 'JavaScript', 'message_length': 39}
+2025-02-14 15:45:50.103 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw a trick! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:47', 'category': 'other', 'sentiment': 0.54, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:45:50.113 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 400.
+2025-02-14 15:45:50.114 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:45:52.122 | INFO     | __main__:main:182 - {'message': 'I just tried an app! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:52', 'category': 'other', 'sentiment': 0.71, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:45:52.123 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried an app! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:52', 'category': 'other', 'sentiment': 0.71, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:45:55.114 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 400.
+2025-02-14 15:45:55.125 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried an app! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:45:52', 'category': 'other', 'sentiment': 0.71, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:45:55.143 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 596.
+2025-02-14 15:45:55.144 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:45:57.125 | INFO     | __main__:main:182 - {'message': 'I just tried Python! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-14 15:45:57', 'category': 'tech', 'sentiment': 0.63, 'keyword_mentioned': 'Python', 'message_length': 36}
+2025-02-14 15:45:57.127 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried Python! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-14 15:45:57', 'category': 'tech', 'sentiment': 0.63, 'keyword_mentioned': 'Python', 'message_length': 36}
+2025-02-14 15:46:00.145 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 596.
+2025-02-14 15:46:00.156 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried Python! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-14 15:45:57', 'category': 'tech', 'sentiment': 0.63, 'keyword_mentioned': 'Python', 'message_length': 36}
+2025-02-14 15:46:00.171 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 796.
+2025-02-14 15:46:00.173 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:02.132 | INFO     | __main__:main:182 - {'message': 'I just saw JavaScript! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:02', 'category': 'tech', 'sentiment': 0.31, 'keyword_mentioned': 'JavaScript', 'message_length': 39}
+2025-02-14 15:46:02.133 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw JavaScript! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:02', 'category': 'tech', 'sentiment': 0.31, 'keyword_mentioned': 'JavaScript', 'message_length': 39}
+2025-02-14 15:46:05.174 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 796.
+2025-02-14 15:46:05.186 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw JavaScript! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:02', 'category': 'tech', 'sentiment': 0.31, 'keyword_mentioned': 'JavaScript', 'message_length': 39}
+2025-02-14 15:46:05.200 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1003.
+2025-02-14 15:46:05.201 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:07.136 | INFO     | __main__:main:182 - {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:07', 'category': 'tech', 'sentiment': 0.22, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-14 15:46:07.136 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:07', 'category': 'tech', 'sentiment': 0.22, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-14 15:46:10.202 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1003.
+2025-02-14 15:46:10.215 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:07', 'category': 'tech', 'sentiment': 0.22, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-14 15:46:10.232 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1212.
+2025-02-14 15:46:10.233 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:12.138 | INFO     | __main__:main:182 - {'message': 'I just found recipe! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:12', 'category': 'food', 'sentiment': 0.86, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-14 15:46:12.140 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found recipe! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:12', 'category': 'food', 'sentiment': 0.86, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-14 15:46:15.235 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1212.
+2025-02-14 15:46:15.244 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found recipe! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:12', 'category': 'food', 'sentiment': 0.86, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-14 15:46:15.260 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1412.
+2025-02-14 15:46:15.261 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:17.142 | INFO     | __main__:main:182 - {'message': 'I just loved a meme! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:17', 'category': 'humor', 'sentiment': 0.96, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:46:17.144 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just loved a meme! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:17', 'category': 'humor', 'sentiment': 0.96, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:46:20.262 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1412.
+2025-02-14 15:46:20.280 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just loved a meme! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:17', 'category': 'humor', 'sentiment': 0.96, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:46:20.291 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1611.
+2025-02-14 15:46:20.292 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:22.146 | INFO     | __main__:main:182 - {'message': 'I just found a movie! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:22', 'category': 'entertainment', 'sentiment': 0.17, 'keyword_mentioned': 'movie', 'message_length': 37}
+2025-02-14 15:46:22.148 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found a movie! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:22', 'category': 'entertainment', 'sentiment': 0.17, 'keyword_mentioned': 'movie', 'message_length': 37}
+2025-02-14 15:46:25.294 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1611.
+2025-02-14 15:46:25.306 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found a movie! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:22', 'category': 'entertainment', 'sentiment': 0.17, 'keyword_mentioned': 'movie', 'message_length': 37}
+2025-02-14 15:46:25.324 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1822.
+2025-02-14 15:46:25.324 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:27.150 | INFO     | __main__:main:182 - {'message': 'I just tried an app! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:46:27', 'category': 'other', 'sentiment': 0.18, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:46:27.152 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried an app! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:46:27', 'category': 'other', 'sentiment': 0.18, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:46:30.325 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 1822.
+2025-02-14 15:46:30.339 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried an app! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:46:27', 'category': 'other', 'sentiment': 0.18, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:46:30.356 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2019.
+2025-02-14 15:46:30.357 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:32.153 | INFO     | __main__:main:182 - {'message': 'I just saw JavaScript! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:32', 'category': 'tech', 'sentiment': 0.44, 'keyword_mentioned': 'JavaScript', 'message_length': 36}
+2025-02-14 15:46:32.155 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw JavaScript! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:32', 'category': 'tech', 'sentiment': 0.44, 'keyword_mentioned': 'JavaScript', 'message_length': 36}
+2025-02-14 15:46:35.358 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2019.
+2025-02-14 15:46:35.368 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw JavaScript! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:46:32', 'category': 'tech', 'sentiment': 0.44, 'keyword_mentioned': 'JavaScript', 'message_length': 36}
+2025-02-14 15:46:35.384 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2223.
+2025-02-14 15:46:35.385 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:37.157 | INFO     | __main__:main:182 - {'message': 'I just found game! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:37', 'category': 'gaming', 'sentiment': 0.47, 'keyword_mentioned': 'game', 'message_length': 34}
+2025-02-14 15:46:37.158 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found game! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:37', 'category': 'gaming', 'sentiment': 0.47, 'keyword_mentioned': 'game', 'message_length': 34}
+2025-02-14 15:46:40.386 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2223.
+2025-02-14 15:46:40.399 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found game! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:46:37', 'category': 'gaming', 'sentiment': 0.47, 'keyword_mentioned': 'game', 'message_length': 34}
+2025-02-14 15:46:40.411 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2423.
+2025-02-14 15:46:40.412 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:42.160 | INFO     | __main__:main:182 - {'message': 'I just found a story! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:46:42', 'category': 'other', 'sentiment': 0.32, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:46:42.162 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found a story! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:46:42', 'category': 'other', 'sentiment': 0.32, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:46:45.413 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2423.
+2025-02-14 15:46:45.425 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found a story! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:46:42', 'category': 'other', 'sentiment': 0.32, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:46:45.441 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2620.
+2025-02-14 15:46:45.442 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:47.164 | INFO     | __main__:main:182 - {'message': 'I just loved travel! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:47', 'category': 'travel', 'sentiment': 0.58, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:46:47.165 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just loved travel! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:47', 'category': 'travel', 'sentiment': 0.58, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:46:50.443 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2620.
+2025-02-14 15:46:50.458 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just loved travel! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:47', 'category': 'travel', 'sentiment': 0.58, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:46:50.475 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2820.
+2025-02-14 15:46:50.476 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:52.167 | INFO     | __main__:main:182 - {'message': 'I just found travel! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:52', 'category': 'travel', 'sentiment': 0.97, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:46:52.169 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found travel! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:52', 'category': 'travel', 'sentiment': 0.97, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:46:55.477 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 2820.
+2025-02-14 15:46:55.490 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found travel! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:52', 'category': 'travel', 'sentiment': 0.97, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:46:55.504 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3020.
+2025-02-14 15:46:55.505 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:46:57.171 | INFO     | __main__:main:182 - {'message': 'I just saw a trick! It was exciting.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:57', 'category': 'other', 'sentiment': 0.0, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:46:57.173 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw a trick! It was exciting.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:57', 'category': 'other', 'sentiment': 0.0, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:47:00.506 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3020.
+2025-02-14 15:47:00.520 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw a trick! It was exciting.', 'author': 'Bob', 'timestamp': '2025-02-14 15:46:57', 'category': 'other', 'sentiment': 0.0, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:47:00.532 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3217.
+2025-02-14 15:47:00.533 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:02.175 | INFO     | __main__:main:182 - {'message': 'I just found game! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:02', 'category': 'gaming', 'sentiment': 0.36, 'keyword_mentioned': 'game', 'message_length': 34}
+2025-02-14 15:47:02.176 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found game! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:02', 'category': 'gaming', 'sentiment': 0.36, 'keyword_mentioned': 'game', 'message_length': 34}
+2025-02-14 15:47:05.535 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3217.
+2025-02-14 15:47:05.546 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found game! It was amazing.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:02', 'category': 'gaming', 'sentiment': 0.36, 'keyword_mentioned': 'game', 'message_length': 34}
+2025-02-14 15:47:05.562 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3413.
+2025-02-14 15:47:05.563 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:07.179 | INFO     | __main__:main:182 - {'message': 'I just saw recipe! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:07', 'category': 'food', 'sentiment': 0.42, 'keyword_mentioned': 'recipe', 'message_length': 32}
+2025-02-14 15:47:07.180 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw recipe! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:07', 'category': 'food', 'sentiment': 0.42, 'keyword_mentioned': 'recipe', 'message_length': 32}
+2025-02-14 15:47:10.564 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3413.
+2025-02-14 15:47:10.574 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw recipe! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:07', 'category': 'food', 'sentiment': 0.42, 'keyword_mentioned': 'recipe', 'message_length': 32}
+2025-02-14 15:47:10.591 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3609.
+2025-02-14 15:47:10.592 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:12.182 | INFO     | __main__:main:182 - {'message': 'I just saw an app! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:12', 'category': 'other', 'sentiment': 0.65, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:12.184 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw an app! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:12', 'category': 'other', 'sentiment': 0.65, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:15.593 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3609.
+2025-02-14 15:47:15.607 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw an app! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:12', 'category': 'other', 'sentiment': 0.65, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:15.620 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3807.
+2025-02-14 15:47:15.621 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:17.186 | INFO     | __main__:main:182 - {'message': 'I just saw a movie! It was exciting.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:17', 'category': 'entertainment', 'sentiment': 0.2, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-14 15:47:17.187 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw a movie! It was exciting.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:17', 'category': 'entertainment', 'sentiment': 0.2, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-14 15:47:20.622 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 3807.
+2025-02-14 15:47:20.631 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw a movie! It was exciting.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:17', 'category': 'entertainment', 'sentiment': 0.2, 'keyword_mentioned': 'movie', 'message_length': 36}
+2025-02-14 15:47:20.644 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4016.
+2025-02-14 15:47:20.645 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:22.191 | INFO     | __main__:main:182 - {'message': 'I just saw a meme! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:22', 'category': 'humor', 'sentiment': 0.97, 'keyword_mentioned': 'meme', 'message_length': 32}
+2025-02-14 15:47:22.192 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw a meme! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:22', 'category': 'humor', 'sentiment': 0.97, 'keyword_mentioned': 'meme', 'message_length': 32}
+2025-02-14 15:47:25.646 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4016.
+2025-02-14 15:47:25.658 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw a meme! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:22', 'category': 'humor', 'sentiment': 0.97, 'keyword_mentioned': 'meme', 'message_length': 32}
+2025-02-14 15:47:25.674 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4209.
+2025-02-14 15:47:25.675 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:27.194 | INFO     | __main__:main:182 - {'message': 'I just tried recipe! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:27', 'category': 'food', 'sentiment': 0.03, 'keyword_mentioned': 'recipe', 'message_length': 36}
+2025-02-14 15:47:27.195 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried recipe! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:27', 'category': 'food', 'sentiment': 0.03, 'keyword_mentioned': 'recipe', 'message_length': 36}
+2025-02-14 15:47:30.675 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4209.
+2025-02-14 15:47:30.685 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried recipe! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:27', 'category': 'food', 'sentiment': 0.03, 'keyword_mentioned': 'recipe', 'message_length': 36}
+2025-02-14 15:47:30.703 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4411.
+2025-02-14 15:47:30.704 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:32.196 | INFO     | __main__:main:182 - {'message': 'I just loved a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:32', 'category': 'other', 'sentiment': 0.33, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:47:32.197 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just loved a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:32', 'category': 'other', 'sentiment': 0.33, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:47:35.705 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4411.
+2025-02-14 15:47:35.717 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just loved a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:32', 'category': 'other', 'sentiment': 0.33, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:47:35.734 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4612.
+2025-02-14 15:47:35.734 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:37.198 | INFO     | __main__:main:182 - {'message': 'I just tried an app! It was weird.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:37', 'category': 'other', 'sentiment': 0.08, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:37.198 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried an app! It was weird.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:37', 'category': 'other', 'sentiment': 0.08, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:40.736 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4612.
+2025-02-14 15:47:40.752 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried an app! It was weird.', 'author': 'Bob', 'timestamp': '2025-02-14 15:47:37', 'category': 'other', 'sentiment': 0.08, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:40.764 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4808.
+2025-02-14 15:47:40.765 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:42.200 | INFO     | __main__:main:182 - {'message': 'I just saw a trick! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:42', 'category': 'other', 'sentiment': 0.52, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:42.200 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw a trick! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:42', 'category': 'other', 'sentiment': 0.52, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:45.766 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 4808.
+2025-02-14 15:47:45.776 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw a trick! It was boring.', 'author': 'Alice', 'timestamp': '2025-02-14 15:47:42', 'category': 'other', 'sentiment': 0.52, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:47:45.790 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5006.
+2025-02-14 15:47:45.791 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:47.201 | INFO     | __main__:main:182 - {'message': 'I just saw an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:47', 'category': 'other', 'sentiment': 0.49, 'keyword_mentioned': 'other', 'message_length': 32}
+2025-02-14 15:47:47.203 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:47', 'category': 'other', 'sentiment': 0.49, 'keyword_mentioned': 'other', 'message_length': 32}
+2025-02-14 15:47:50.792 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5006.
+2025-02-14 15:47:50.804 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw an app! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:47', 'category': 'other', 'sentiment': 0.49, 'keyword_mentioned': 'other', 'message_length': 32}
+2025-02-14 15:47:50.820 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5204.
+2025-02-14 15:47:50.821 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:52.204 | INFO     | __main__:main:182 - {'message': 'I just found a meme! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:52', 'category': 'humor', 'sentiment': 0.73, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:47:52.204 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found a meme! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:52', 'category': 'humor', 'sentiment': 0.73, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:47:55.822 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5204.
+2025-02-14 15:47:55.835 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found a meme! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:52', 'category': 'humor', 'sentiment': 0.73, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:47:55.848 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5403.
+2025-02-14 15:47:55.848 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:47:57.206 | INFO     | __main__:main:182 - {'message': 'I just shared an app! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:57', 'category': 'other', 'sentiment': 0.87, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-14 15:47:57.208 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just shared an app! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:57', 'category': 'other', 'sentiment': 0.87, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-14 15:48:00.850 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5403.
+2025-02-14 15:48:00.860 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just shared an app! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:47:57', 'category': 'other', 'sentiment': 0.87, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-14 15:48:00.873 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5606.
+2025-02-14 15:48:00.874 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:02.209 | INFO     | __main__:main:182 - {'message': 'I just tried game! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:48:02', 'category': 'gaming', 'sentiment': 0.29, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:02.210 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried game! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:48:02', 'category': 'gaming', 'sentiment': 0.29, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:05.874 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5606.
+2025-02-14 15:48:05.884 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried game! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:48:02', 'category': 'gaming', 'sentiment': 0.29, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:05.898 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5800.
+2025-02-14 15:48:05.898 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:07.211 | INFO     | __main__:main:182 - {'message': 'I just saw a trick! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:07', 'category': 'other', 'sentiment': 0.36, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:48:07.211 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw a trick! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:07', 'category': 'other', 'sentiment': 0.36, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:48:10.899 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5800.
+2025-02-14 15:48:10.913 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw a trick! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:07', 'category': 'other', 'sentiment': 0.36, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:48:10.926 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5996.
+2025-02-14 15:48:10.927 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:12.213 | INFO     | __main__:main:182 - {'message': 'I just loved game! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:12', 'category': 'gaming', 'sentiment': 0.22, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:12.215 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just loved game! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:12', 'category': 'gaming', 'sentiment': 0.22, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:15.928 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 5996.
+2025-02-14 15:48:15.942 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just loved game! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:12', 'category': 'gaming', 'sentiment': 0.22, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:15.957 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6194.
+2025-02-14 15:48:15.958 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:17.217 | INFO     | __main__:main:182 - {'message': 'I just saw a story! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:48:17', 'category': 'other', 'sentiment': 0.66, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:17.219 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just saw a story! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:48:17', 'category': 'other', 'sentiment': 0.66, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:20.960 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6194.
+2025-02-14 15:48:20.972 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just saw a story! It was exciting.', 'author': 'Alice', 'timestamp': '2025-02-14 15:48:17', 'category': 'other', 'sentiment': 0.66, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:20.987 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6394.
+2025-02-14 15:48:20.988 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:22.221 | INFO     | __main__:main:182 - {'message': 'I just shared a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:22', 'category': 'entertainment', 'sentiment': 0.63, 'keyword_mentioned': 'movie', 'message_length': 39}
+2025-02-14 15:48:22.223 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just shared a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:22', 'category': 'entertainment', 'sentiment': 0.63, 'keyword_mentioned': 'movie', 'message_length': 39}
+2025-02-14 15:48:25.989 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6394.
+2025-02-14 15:48:26.005 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just shared a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:22', 'category': 'entertainment', 'sentiment': 0.63, 'keyword_mentioned': 'movie', 'message_length': 39}
+2025-02-14 15:48:26.019 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6603.
+2025-02-14 15:48:26.020 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:27.225 | INFO     | __main__:main:182 - {'message': 'I just tried a meme! It was amazing.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:27', 'category': 'humor', 'sentiment': 0.15, 'keyword_mentioned': 'meme', 'message_length': 36}
+2025-02-14 15:48:27.227 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried a meme! It was amazing.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:27', 'category': 'humor', 'sentiment': 0.15, 'keyword_mentioned': 'meme', 'message_length': 36}
+2025-02-14 15:48:31.021 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6603.
+2025-02-14 15:48:31.035 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried a meme! It was amazing.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:27', 'category': 'humor', 'sentiment': 0.15, 'keyword_mentioned': 'meme', 'message_length': 36}
+2025-02-14 15:48:31.047 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6800.
+2025-02-14 15:48:31.048 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:32.229 | INFO     | __main__:main:182 - {'message': 'I just shared a trick! It was weird.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:32', 'category': 'other', 'sentiment': 0.96, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:32.231 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just shared a trick! It was weird.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:32', 'category': 'other', 'sentiment': 0.96, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:36.049 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6800.
+2025-02-14 15:48:36.061 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just shared a trick! It was weird.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:32', 'category': 'other', 'sentiment': 0.96, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:36.078 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6998.
+2025-02-14 15:48:36.079 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:37.233 | INFO     | __main__:main:182 - {'message': 'I just shared a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:37', 'category': 'other', 'sentiment': 0.37, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:37.234 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just shared a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:37', 'category': 'other', 'sentiment': 0.37, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:41.080 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 6998.
+2025-02-14 15:48:41.092 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just shared a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:37', 'category': 'other', 'sentiment': 0.37, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:48:41.104 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7200.
+2025-02-14 15:48:41.105 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:42.235 | INFO     | __main__:main:182 - {'message': 'I just found game! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:48:42', 'category': 'gaming', 'sentiment': 0.42, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:42.236 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found game! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:48:42', 'category': 'gaming', 'sentiment': 0.42, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:46.106 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7200.
+2025-02-14 15:48:46.106 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found game! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:48:42', 'category': 'gaming', 'sentiment': 0.42, 'keyword_mentioned': 'game', 'message_length': 32}
+2025-02-14 15:48:46.117 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7396.
+2025-02-14 15:48:46.118 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:47.237 | INFO     | __main__:main:182 - {'message': 'I just tried a movie! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:47', 'category': 'entertainment', 'sentiment': 0.41, 'keyword_mentioned': 'movie', 'message_length': 35}
+2025-02-14 15:48:47.238 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried a movie! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:47', 'category': 'entertainment', 'sentiment': 0.41, 'keyword_mentioned': 'movie', 'message_length': 35}
+2025-02-14 15:48:51.119 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7396.
+2025-02-14 15:48:51.132 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried a movie! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:48:47', 'category': 'entertainment', 'sentiment': 0.41, 'keyword_mentioned': 'movie', 'message_length': 35}
+2025-02-14 15:48:51.146 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7605.
+2025-02-14 15:48:51.147 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:52.239 | INFO     | __main__:main:182 - {'message': 'I just loved a story! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:52', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:48:52.241 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just loved a story! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:52', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:48:56.148 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7605.
+2025-02-14 15:48:56.158 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just loved a story! It was funny.', 'author': 'Eve', 'timestamp': '2025-02-14 15:48:52', 'category': 'other', 'sentiment': 0.02, 'keyword_mentioned': 'other', 'message_length': 35}
+2025-02-14 15:48:56.166 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7802.
+2025-02-14 15:48:56.167 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:48:57.243 | INFO     | __main__:main:182 - {'message': 'I just tried a meme! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:48:57', 'category': 'humor', 'sentiment': 0.55, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:48:57.244 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried a meme! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:48:57', 'category': 'humor', 'sentiment': 0.55, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:49:01.168 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7802.
+2025-02-14 15:49:01.179 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried a meme! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-14 15:48:57', 'category': 'humor', 'sentiment': 0.55, 'keyword_mentioned': 'meme', 'message_length': 34}
+2025-02-14 15:49:01.188 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7997.
+2025-02-14 15:49:01.189 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:49:02.246 | INFO     | __main__:main:182 - {'message': 'I just found a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:02', 'category': 'entertainment', 'sentiment': 0.76, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-14 15:49:02.248 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:02', 'category': 'entertainment', 'sentiment': 0.76, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-14 15:49:06.191 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 7997.
+2025-02-14 15:49:06.203 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:02', 'category': 'entertainment', 'sentiment': 0.76, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-14 15:49:06.215 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8205.
+2025-02-14 15:49:06.215 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:49:07.250 | INFO     | __main__:main:182 - {'message': 'I just found an app! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:49:07', 'category': 'other', 'sentiment': 0.83, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:49:07.250 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just found an app! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:49:07', 'category': 'other', 'sentiment': 0.83, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:49:11.216 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8205.
+2025-02-14 15:49:11.226 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just found an app! It was funny.', 'author': 'Alice', 'timestamp': '2025-02-14 15:49:07', 'category': 'other', 'sentiment': 0.83, 'keyword_mentioned': 'other', 'message_length': 34}
+2025-02-14 15:49:11.238 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8403.
+2025-02-14 15:49:11.239 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:49:12.252 | INFO     | __main__:main:182 - {'message': 'I just shared travel! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-14 15:49:12', 'category': 'travel', 'sentiment': 0.38, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:49:12.254 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just shared travel! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-14 15:49:12', 'category': 'travel', 'sentiment': 0.38, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:49:16.240 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8403.
+2025-02-14 15:49:16.252 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just shared travel! It was boring.', 'author': 'Bob', 'timestamp': '2025-02-14 15:49:12', 'category': 'travel', 'sentiment': 0.38, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-14 15:49:16.262 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8603.
+2025-02-14 15:49:16.263 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:49:17.256 | INFO     | __main__:main:182 - {'message': 'I just tried a story! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:17', 'category': 'other', 'sentiment': 0.18, 'keyword_mentioned': 'other', 'message_length': 38}
+2025-02-14 15:49:17.257 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried a story! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:17', 'category': 'other', 'sentiment': 0.18, 'keyword_mentioned': 'other', 'message_length': 38}
+2025-02-14 15:49:21.263 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8603.
+2025-02-14 15:49:21.274 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just tried a story! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:17', 'category': 'other', 'sentiment': 0.18, 'keyword_mentioned': 'other', 'message_length': 38}
+2025-02-14 15:49:21.284 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8803.
+2025-02-14 15:49:21.285 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:49:22.258 | INFO     | __main__:main:182 - {'message': 'I just shared a trick! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:49:22', 'category': 'other', 'sentiment': 0.5, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:49:22.260 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just shared a trick! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:49:22', 'category': 'other', 'sentiment': 0.5, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:49:26.285 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 8803.
+2025-02-14 15:49:26.296 | INFO     | __main__:process_message:68 - Processed message: {'message': 'I just shared a trick! It was weird.', 'author': 'Charlie', 'timestamp': '2025-02-14 15:49:22', 'category': 'other', 'sentiment': 0.5, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-14 15:49:26.309 | INFO     | __main__:consume_messages_from_file:235 - 3. Read from live data file at position 9004.
+2025-02-14 15:49:26.310 | INFO     | __main__:consume_messages_from_file:258 - No new messages found, sleeping...
+2025-02-14 15:49:27.262 | INFO     | __main__:main:182 - {'message': 'I just tried Python! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:27', 'category': 'tech', 'sentiment': 0.57, 'keyword_mentioned': 'Python', 'message_length': 35}
+2025-02-14 15:49:27.263 | INFO     | __main__:main:186 - STEP 4a Wrote message to file: {'message': 'I just tried Python! It was boring.', 'author': 'Eve', 'timestamp': '2025-02-14 15:49:27', 'category': 'tech', 'sentiment': 0.57, 'keyword_mentioned': 'Python', 'message_length': 35}

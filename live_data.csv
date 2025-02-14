@@ -1,0 +1,112 @@
+message,author,timestamp,category,sentiment,keyword_mentioned,message_length
+I just found travel! It was boring.,Alice,2025-02-14 15:39:06,travel,0.07,travel,35
+I just shared a movie! It was funny.,Alice,2025-02-14 15:39:11,entertainment,0.76,movie,36
+I just loved JavaScript! It was weird.,Alice,2025-02-14 15:39:16,tech,0.58,JavaScript,38
+I just tried game! It was weird.,Charlie,2025-02-14 15:39:21,gaming,0.83,game,32
+I just tried JavaScript! It was exciting.,Charlie,2025-02-14 15:39:26,tech,0.1,JavaScript,41
+I just found a trick! It was exciting.,Bob,2025-02-14 15:39:31,other,0.75,other,38
+I just found a trick! It was funny.,Charlie,2025-02-14 15:39:36,other,0.46,other,35
+I just found recipe! It was weird.,Bob,2025-02-14 15:39:41,food,0.02,recipe,34
+I just saw game! It was weird.,Alice,2025-02-14 15:39:46,gaming,0.66,game,30
+I just tried a meme! It was exciting.,Alice,2025-02-14 15:39:51,humor,0.3,meme,37
+I just shared JavaScript! It was exciting.,Alice,2025-02-14 15:39:56,tech,0.88,JavaScript,42
+I just found travel! It was boring.,Alice,2025-02-14 15:39:06,travel,0.07,travel,35
+I just shared a movie! It was funny.,Alice,2025-02-14 15:39:11,entertainment,0.76,movie,36
+I just loved JavaScript! It was weird.,Alice,2025-02-14 15:39:16,tech,0.58,JavaScript,38
+I just tried game! It was weird.,Charlie,2025-02-14 15:39:21,gaming,0.83,game,32
+I just tried JavaScript! It was exciting.,Charlie,2025-02-14 15:39:26,tech,0.1,JavaScript,41
+I just found a trick! It was exciting.,Bob,2025-02-14 15:39:31,other,0.75,other,38
+I just found a trick! It was funny.,Charlie,2025-02-14 15:39:36,other,0.46,other,35
+I just found recipe! It was weird.,Bob,2025-02-14 15:39:41,food,0.02,recipe,34
+I just saw game! It was weird.,Alice,2025-02-14 15:39:46,gaming,0.66,game,30
+I just tried a meme! It was exciting.,Alice,2025-02-14 15:39:51,humor,0.3,meme,37
+I just shared JavaScript! It was exciting.,Alice,2025-02-14 15:39:56,tech,0.88,JavaScript,42
+I just loved a trick! It was weird.,Eve,2025-02-14 15:40:01,other,0.46,other,35
+I just saw travel! It was exciting.,Alice,2025-02-14 15:40:06,travel,0.83,travel,35
+I just tried travel! It was amazing.,Alice,2025-02-14 15:40:11,travel,0.01,travel,36
+I just tried an app! It was amazing.,Eve,2025-02-14 15:40:16,other,0.41,other,36
+I just saw a story! It was boring.,Bob,2025-02-14 15:40:21,other,0.35,other,34
+I just found a movie! It was funny.,Bob,2025-02-14 15:40:26,entertainment,0.43,movie,35
+I just tried a story! It was exciting.,Alice,2025-02-14 15:40:31,other,0.42,other,38
+I just saw game! It was funny.,Eve,2025-02-14 15:40:36,gaming,0.76,game,30
+I just tried a meme! It was amazing.,Charlie,2025-02-14 15:40:41,humor,0.0,meme,36
+I just found a movie! It was amazing.,Bob,2025-02-14 15:40:46,entertainment,0.16,movie,37
+I just found recipe! It was funny.,Eve,2025-02-14 15:40:51,food,0.17,recipe,34
+I just tried a movie! It was weird.,Alice,2025-02-14 15:40:56,entertainment,0.59,movie,35
+I just tried game! It was exciting.,Bob,2025-02-14 15:41:01,gaming,0.15,game,35
+I just loved recipe! It was weird.,Charlie,2025-02-14 15:41:06,food,0.13,recipe,34
+I just shared a movie! It was boring.,Alice,2025-02-14 15:41:11,entertainment,0.71,movie,37
+I just saw a trick! It was weird.,Charlie,2025-02-14 15:41:16,other,0.76,other,33
+I just shared travel! It was boring.,Bob,2025-02-14 15:41:21,travel,0.88,travel,36
+I just loved a story! It was boring.,Charlie,2025-02-14 15:41:26,other,0.85,other,36
+I just found an app! It was exciting.,Eve,2025-02-14 15:41:31,other,0.55,other,37
+I just found an app! It was funny.,Bob,2025-02-14 15:41:36,other,0.2,other,34
+I just tried a story! It was funny.,Bob,2025-02-14 15:41:41,other,0.14,other,35
+I just saw travel! It was boring.,Bob,2025-02-14 15:41:46,travel,0.92,travel,33
+I just shared recipe! It was boring.,Eve,2025-02-14 15:41:51,food,0.33,recipe,36
+I just loved game! It was funny.,Alice,2025-02-14 15:41:56,gaming,0.32,game,32
+I just tried Python! It was boring.,Bob,2025-02-14 15:42:01,tech,0.03,Python,35
+I just loved an app! It was weird.,Charlie,2025-02-14 15:42:06,other,0.66,other,34
+I just loved Python! It was amazing.,Charlie,2025-02-14 15:42:11,tech,0.78,Python,36
+I just found a meme! It was boring.,Alice,2025-02-14 15:42:16,humor,0.53,meme,35
+I just shared a meme! It was funny.,Bob,2025-02-14 15:42:21,humor,0.03,meme,35
+I just found a trick! It was funny.,Eve,2025-02-14 15:42:26,other,0.47,other,35
+I just tried recipe! It was funny.,Charlie,2025-02-14 15:42:31,food,0.63,recipe,34
+I just loved JavaScript! It was weird.,Eve,2025-02-14 15:42:36,tech,0.99,JavaScript,38
+I just saw recipe! It was weird.,Eve,2025-02-14 15:42:41,food,0.05,recipe,32
+I just tried Python! It was weird.,Eve,2025-02-14 15:42:46,tech,0.66,Python,34
+I just tried a meme! It was funny.,Charlie,2025-02-14 15:42:51,humor,0.84,meme,34
+I just found a meme! It was weird.,Bob,2025-02-14 15:42:56,humor,0.87,meme,34
+I just found a trick! It was exciting.,Eve,2025-02-14 15:43:01,other,0.97,other,38
+I just found recipe! It was exciting.,Alice,2025-02-14 15:43:06,food,0.71,recipe,37
+I just tried a trick! It was weird.,Bob,2025-02-14 15:43:11,other,0.51,other,35
+I just tried recipe! It was boring.,Charlie,2025-02-14 15:43:16,food,0.69,recipe,35
+I just found an app! It was weird.,Eve,2025-02-14 15:43:21,other,0.39,other,34
+I just found a trick! It was weird.,Alice,2025-02-14 15:43:26,other,0.44,other,35
+I just saw travel! It was amazing.,Eve,2025-02-14 15:43:31,travel,0.33,travel,34
+I just tried Python! It was boring.,Charlie,2025-02-14 15:43:36,tech,0.48,Python,35
+I just loved JavaScript! It was boring.,Eve,2025-02-14 15:45:42,tech,1.0,JavaScript,39
+I just saw a trick! It was boring.,Eve,2025-02-14 15:45:47,other,0.54,other,34
+I just tried an app! It was funny.,Eve,2025-02-14 15:45:52,other,0.71,other,34
+I just tried Python! It was amazing.,Alice,2025-02-14 15:45:57,tech,0.63,Python,36
+I just saw JavaScript! It was exciting.,Alice,2025-02-14 15:46:02,tech,0.31,JavaScript,39
+I just loved JavaScript! It was exciting.,Alice,2025-02-14 15:46:07,tech,0.22,JavaScript,41
+I just found recipe! It was funny.,Charlie,2025-02-14 15:46:12,food,0.86,recipe,34
+I just loved a meme! It was weird.,Charlie,2025-02-14 15:46:17,humor,0.96,meme,34
+I just found a movie! It was amazing.,Charlie,2025-02-14 15:46:22,entertainment,0.17,movie,37
+I just tried an app! It was boring.,Eve,2025-02-14 15:46:27,other,0.18,other,35
+I just saw JavaScript! It was funny.,Alice,2025-02-14 15:46:32,tech,0.44,JavaScript,36
+I just found game! It was amazing.,Charlie,2025-02-14 15:46:37,gaming,0.47,game,34
+I just found a story! It was funny.,Eve,2025-02-14 15:46:42,other,0.32,other,35
+I just loved travel! It was amazing.,Bob,2025-02-14 15:46:47,travel,0.58,travel,36
+I just found travel! It was amazing.,Bob,2025-02-14 15:46:52,travel,0.97,travel,36
+I just saw a trick! It was exciting.,Bob,2025-02-14 15:46:57,other,0.0,other,36
+I just found game! It was amazing.,Bob,2025-02-14 15:47:02,gaming,0.36,game,34
+I just saw recipe! It was funny.,Alice,2025-02-14 15:47:07,food,0.42,recipe,32
+I just saw an app! It was amazing.,Alice,2025-02-14 15:47:12,other,0.65,other,34
+I just saw a movie! It was exciting.,Charlie,2025-02-14 15:47:17,entertainment,0.2,movie,36
+I just saw a meme! It was funny.,Bob,2025-02-14 15:47:22,humor,0.97,meme,32
+I just tried recipe! It was amazing.,Charlie,2025-02-14 15:47:27,food,0.03,recipe,36
+I just loved a trick! It was funny.,Charlie,2025-02-14 15:47:32,other,0.33,other,35
+I just tried an app! It was weird.,Bob,2025-02-14 15:47:37,other,0.08,other,34
+I just saw a trick! It was boring.,Alice,2025-02-14 15:47:42,other,0.52,other,34
+I just saw an app! It was weird.,Charlie,2025-02-14 15:47:47,other,0.49,other,32
+I just found a meme! It was funny.,Charlie,2025-02-14 15:47:52,humor,0.73,meme,34
+I just shared an app! It was amazing.,Charlie,2025-02-14 15:47:57,other,0.87,other,37
+I just tried game! It was funny.,Bob,2025-02-14 15:48:02,gaming,0.29,game,32
+I just saw a trick! It was boring.,Eve,2025-02-14 15:48:07,other,0.36,other,34
+I just loved game! It was funny.,Charlie,2025-02-14 15:48:12,gaming,0.22,game,32
+I just saw a story! It was exciting.,Alice,2025-02-14 15:48:17,other,0.66,other,36
+I just shared a movie! It was exciting.,Eve,2025-02-14 15:48:22,entertainment,0.63,movie,39
+I just tried a meme! It was amazing.,Eve,2025-02-14 15:48:27,humor,0.15,meme,36
+I just shared a trick! It was weird.,Eve,2025-02-14 15:48:32,other,0.96,other,36
+I just shared a trick! It was funny.,Charlie,2025-02-14 15:48:37,other,0.37,other,36
+I just found game! It was funny.,Alice,2025-02-14 15:48:42,gaming,0.42,game,32
+I just tried a movie! It was funny.,Charlie,2025-02-14 15:48:47,entertainment,0.41,movie,35
+I just loved a story! It was funny.,Eve,2025-02-14 15:48:52,other,0.02,other,35
+I just tried a meme! It was funny.,Bob,2025-02-14 15:48:57,humor,0.55,meme,34
+I just found a movie! It was exciting.,Eve,2025-02-14 15:49:02,entertainment,0.76,movie,38
+I just found an app! It was funny.,Alice,2025-02-14 15:49:07,other,0.83,other,34
+I just shared travel! It was boring.,Bob,2025-02-14 15:49:12,travel,0.38,travel,36
+I just tried a story! It was exciting.,Eve,2025-02-14 15:49:17,other,0.18,other,38
+I just shared a trick! It was weird.,Charlie,2025-02-14 15:49:22,other,0.5,other,36

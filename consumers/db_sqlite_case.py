@@ -37,28 +37,17 @@ from utils.utils_logger import logger
 
 def init_db(db_path: pathlib.Path):
     """
-    Initialize the SQLite database -
-    if it doesn't exist, create the 'streamed_messages' table
-    and if it does, recreate it.
-
-    Args:
-    - db_path (pathlib.Path): Path to the SQLite database file.
-
+    Initialize the SQLite database with message storage and sentiment insights.
     """
-    logger.info("Calling SQLite init_db() with {db_path=}.")
     try:
-        # Ensure the directories for the db exist
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
-            logger.info("SUCCESS: Got a cursor to execute SQL.")
-
             cursor.execute("DROP TABLE IF EXISTS streamed_messages;")
-
             cursor.execute(
                 """
-                CREATE TABLE IF NOT EXISTS streamed_messages (
+                CREATE TABLE streamed_messages (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     message TEXT,
                     author TEXT,
@@ -70,10 +59,23 @@ def init_db(db_path: pathlib.Path):
                 )
             """
             )
+            
+            # New table for sentiment insights
+            cursor.execute("DROP TABLE IF EXISTS sentiment_insights;")
+            cursor.execute(
+                """
+                CREATE TABLE sentiment_insights (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    average_sentiment REAL,
+                    total_messages INTEGER,
+                    last_updated TEXT
+                )
+            """
+            )
+
             conn.commit()
-        logger.info(f"SUCCESS: Database initialized and table ready at {db_path}.")
     except Exception as e:
-        logger.error(f"ERROR: Failed to initialize a sqlite database at {db_path}: {e}")
+        logger.error(f"ERROR: Failed to initialize database: {e}")
 
 
 #####################################
