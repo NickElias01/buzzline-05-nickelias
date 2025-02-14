@@ -1,0 +1,12 @@
+{"message": "I just tried Python! It was boring.", "author": "Charlie", "timestamp": "2025-02-14 16:07:38", "category": "tech", "sentiment": 0.78, "keyword_mentioned": "Python", "message_length": 35}
+{"message": "I just shared a meme! It was boring.", "author": "Eve", "timestamp": "2025-02-14 16:07:43", "category": "humor", "sentiment": 0.29, "keyword_mentioned": "meme", "message_length": 36}
+{"message": "I just tried Python! It was funny.", "author": "Alice", "timestamp": "2025-02-14 16:07:48", "category": "tech", "sentiment": 0.22, "keyword_mentioned": "Python", "message_length": 34}
+{"message": "I just tried Python! It was exciting.", "author": "Bob", "timestamp": "2025-02-14 16:07:53", "category": "tech", "sentiment": 0.47, "keyword_mentioned": "Python", "message_length": 37}
+{"message": "I just found an app! It was amazing.", "author": "Bob", "timestamp": "2025-02-14 16:07:58", "category": "other", "sentiment": 0.8, "keyword_mentioned": "other", "message_length": 36}
+{"message": "I just found a trick! It was weird.", "author": "Alice", "timestamp": "2025-02-14 16:08:03", "category": "other", "sentiment": 0.42, "keyword_mentioned": "other", "message_length": 35}
+{"message": "I just shared Python! It was exciting.", "author": "Alice", "timestamp": "2025-02-14 16:08:08", "category": "tech", "sentiment": 0.51, "keyword_mentioned": "Python", "message_length": 38}
+{"message": "I just loved a story! It was funny.", "author": "Charlie", "timestamp": "2025-02-14 16:08:13", "category": "other", "sentiment": 0.07, "keyword_mentioned": "other", "message_length": 35}
+{"message": "I just saw Python! It was exciting.", "author": "Charlie", "timestamp": "2025-02-14 16:08:18", "category": "tech", "sentiment": 0.53, "keyword_mentioned": "Python", "message_length": 35}
+{"message": "I just found game! It was amazing.", "author": "Eve", "timestamp": "2025-02-14 16:08:23", "category": "gaming", "sentiment": 0.06, "keyword_mentioned": "game", "message_length": 34}
+{"message": "I just saw an app! It was weird.", "author": "Eve", "timestamp": "2025-02-14 16:08:28", "category": "other", "sentiment": 0.37, "keyword_mentioned": "other", "message_length": 32}
+{"message": "I just found an app! It was boring.", "author": "Alice", "timestamp": "2025-02-14 16:08:33", "category": "other", "sentiment": 0.02, "keyword_mentioned": "other", "message_length": 35}

@@ -1,10 +1,13 @@
 """
+Elias Analytics
+
 file_consumer_nickelias.py
 
-Consume json messages from a live data file. 
-Insert the processed messages into a database.
+This script consumes JSON-formatted messages from a live data file,
+processes them, and inserts the processed data into a SQLite database.
+Additionally, processed messages are logged into a CSV file for tracking.
 
-Example JSON message
+Example JSON message:
 {
     "message": "I just shared a meme! It was amazing.",
     "author": "Charlie",
@@ -15,15 +18,15 @@ Example JSON message
     "message_length": 42
 }
 
-Database functions are in consumers/db_sqlite_case.py.
-Environment variables are in utils/utils_config module. 
+Database-related functions are defined in consumers/db_sqlite_case.py.
+Environment variables are managed via the utils/utils_config module.
 """
 
 #####################################
 # Import Modules
 #####################################
 
-# import from standard library
+# Import standard library modules
 import json
 import pathlib
 import sys
@@ -32,29 +35,34 @@ import csv
 import sqlite3
 import os
 
-# import from local modules
+# Import local utility modules
 import utils.utils_config as config
 from utils.utils_logger import logger
 
 
 #####################################
-# Defining file path for CSV
-# #####################################
+# Define File Path for CSV Logging
+#####################################
 
-# Define the path for the CSV file inside the "data" folder
+# Define the path for the CSV file inside the "data" folder.
+# This will store processed messages in CSV format.
 CSV_FILE_PATH = pathlib.Path("data") / "live_data.csv"
 
+
 #####################################
-# Function to process a single message
-# #####################################
+# Function to Process a Single Message
+#####################################
 
 def process_message(message: dict) -> None:
     """
-    Process and transform a single JSON message.
-    Converts message fields to appropriate data types.
+    Processes a single JSON message, extracting relevant fields and converting them to appropriate data types.
 
     Args:
-        message (str): The JSON message as a string.
+        message (dict): A dictionary containing the message's data, including message, author, timestamp,
+                        category, sentiment, and keyword mentioned.
+
+    Returns:
+        dict: Processed message with proper data types (e.g., converting sentiment to a float).
     """
     try:
         processed_message = {
@@ -73,19 +81,24 @@ def process_message(message: dict) -> None:
 
 
 #####################################
-# Function to write data to CSV
-# #####################################
+# Function to Append Data to CSV
+#####################################
 
 def append_to_csv(processed_message):
     """
-    Append processed message to a CSV file for logging.
+    Appends a processed message to a CSV file for logging purposes.
+    If the CSV file doesn't exist, it writes a header row.
+
+    Args:
+        processed_message (dict): The message data to be written to the CSV file.
     """
     file_exists = os.path.exists(CSV_FILE_PATH)
-    
+
     try:
+        # Open the CSV file in append mode, create it if it doesn't exist
         with open(CSV_FILE_PATH, mode="a", newline="") as file:
             writer = csv.writer(file)
-            # Write header only if file doesn't exist
+            # Write header only if the file doesn't already exist
             if not file_exists:
                 writer.writerow(["message", "author", "timestamp", "category", "sentiment", "keyword_mentioned"])
             writer.writerow([
@@ -100,20 +113,28 @@ def append_to_csv(processed_message):
         logger.error(f"ERROR: Failed to write to CSV file: {e}")
 
 
-
 #####################################
-# Function to initialize the database
+# Function to Initialize the Database
 #####################################
 
 def init_db(db_path: pathlib.Path):
     """
-    Initialize the SQLite database with message storage and sentiment insights.
+    Initializes the SQLite database, setting up tables for storing messages and sentiment insights.
+
+    Args:
+        db_path (pathlib.Path): Path to the SQLite database file.
+
+    Raises:
+        Exception: If there's an error in initializing the database.
     """
     try:
+        # Create directory for database if it doesn't exist
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
 
         with sqlite3.connect(db_path) as conn:
             cursor = conn.cursor()
+
+            # Drop existing table if it exists, and create new tables
             cursor.execute("DROP TABLE IF EXISTS streamed_messages;")
             cursor.execute(
                 """
@@ -129,7 +150,7 @@ def init_db(db_path: pathlib.Path):
             """
             )
             
-            # New table for sentiment insights
+            # Create a new table for sentiment insights
             cursor.execute(
                 """
                 CREATE TABLE IF NOT EXISTS sentiment_insights (
@@ -141,7 +162,7 @@ def init_db(db_path: pathlib.Path):
             """
             )
 
-            # Ensure at least one row exists for tracking insights
+            # Ensure at least one row exists for sentiment insights tracking
             cursor.execute("SELECT COUNT(*) FROM sentiment_insights")
             if cursor.fetchone()[0] == 0:
                 cursor.execute(
@@ -154,12 +175,19 @@ def init_db(db_path: pathlib.Path):
 
 
 #####################################
-# Function to insert a processed message into the database
+# Function to Insert Processed Message into the Database
 #####################################
 
 def insert_message(message: dict, db_path: pathlib.Path) -> None:
     """
-    Insert a single processed message into the database and update sentiment insights.
+    Inserts a processed message into the SQLite database and updates sentiment insights.
+
+    Args:
+        message (dict): Processed message data to insert into the database.
+        db_path (pathlib.Path): Path to the SQLite database file.
+
+    Raises:
+        Exception: If there's an error in inserting the message or updating sentiment insights.
     """
     try:
         with sqlite3.connect(db_path) as conn:
@@ -177,14 +205,13 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
                     message["category"],
                     message["sentiment"],
                     message["keyword_mentioned"],
-                                          ),
+                ),
             )
 
-            # Update sentiment insights
+            # Update sentiment insights based on total messages and average sentiment
             cursor.execute("SELECT COUNT(*), AVG(sentiment) FROM streamed_messages")
             total_messages, avg_sentiment = cursor.fetchone()
 
-            # Update sentiment insights
             cursor.execute(
                 """
                 UPDATE sentiment_insights 
@@ -199,126 +226,100 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
         logger.error(f"ERROR: Failed to insert message and update sentiment insights: {e}")
 
 
-
 #####################################
-# Consume Messages from Live Data File
+# Function to Consume Messages from Live Data File
 #####################################
 
 def consume_messages_from_file(live_data_path, sql_path, interval_secs, last_position):
     """
-    Consume new messages from a file and process them.
-    Each message is expected to be JSON-formatted.
+    Continuously consumes new messages from a live data file, processes them, and stores them
+    in both the database and CSV file.
 
     Args:
-    - live_data_path (pathlib.Path): Path to the live data file.
-    - sql_path (pathlib.Path): Path to the SQLite database file.
-    - interval_secs (int): Interval in seconds to check for new messages.
-    - last_position (int): Last read position in the file.
-    """
-    logger.info("Called consume_messages_from_file() with:")
-    logger.info(f"   {live_data_path=}")
-    logger.info(f"   {sql_path=}")
-    logger.info(f"   {interval_secs=}")
-    logger.info(f"   {last_position=}")
+        live_data_path (pathlib.Path): Path to the live data file (e.g., JSON messages).
+        sql_path (pathlib.Path): Path to the SQLite database file.
+        interval_secs (int): Time interval in seconds to check for new messages.
+        last_position (int): The last position in the file that was read.
 
-    logger.info("1. Initialize the database.")
+    Raises:
+        Exception: If an error occurs during file reading or message processing.
+    """
+    logger.info("Started consuming messages from file.")
+
+    # Initialize the database
     init_db(sql_path)
 
-    logger.info("2. Set the last position to 0 to start at the beginning of the file.")
-    last_position = 0
-
+    # Start reading from the file from the last read position
     while True:
         try:
-            logger.info(f"3. Read from live data file at position {last_position}.")
             with open(live_data_path, "r") as file:
-                # Move to the last read position
                 file.seek(last_position)
-                new_data_found = False  # Track if new messages were read
+                new_data_found = False  # Flag to track if new messages are read
 
                 for line in file:
-                    if line.strip():  # If there's a non-empty line
-                        new_data_found = True  # New message detected
-                        message = json.loads(line.strip())
+                    if line.strip():  # Only process non-empty lines
+                        new_data_found = True
+                        message = json.loads(line.strip())  # Parse the JSON message
 
-                        # Call our process_message function
+                        # Process the message and insert it into the database and CSV
                         processed_message = process_message(message)
-
-                        # If we have a processed message, insert it into the database
                         if processed_message:
                             insert_message(processed_message, sql_path)
-                            append_to_csv(processed_message)  # Append to CSV
+                            append_to_csv(processed_message)
 
-                # Update the last position that's been read to the current file position
+                # Update the last read position in the file
                 last_position = file.tell()
 
             if not new_data_found:
                 logger.info("No new messages found, sleeping...")
-                time.sleep(interval_secs)  # Avoids CPU overload
+                time.sleep(interval_secs)
 
         except FileNotFoundError:
-            logger.error(f"ERROR: Live data file not found at {live_data_path}. Retrying in {interval_secs} seconds.")
-            time.sleep(interval_secs)  # Prevents tight error loop
+            logger.error(f"ERROR: Live data file not found. Retrying in {interval_secs} seconds.")
+            time.sleep(interval_secs)
         except Exception as e:
-            logger.error(f"ERROR: Error reading from live data file: {e}")
-            time.sleep(interval_secs)  # Ensures a delay even on failure
-
+            logger.error(f"ERROR: Unexpected error occurred: {e}")
+            time.sleep(interval_secs)
 
 
 #####################################
 # Define Main Function
 #####################################
 
-
 def main():
     """
-    Main function to run the consumer process.
+    The main function to run the message consumer process.
 
-    Reads configuration, initializes the database, and starts consumption.
-
+    Reads environment variables, initializes the database, and starts consuming messages from the live data file.
     """
-    logger.info("Starting Consumer to run continuously.")
-    logger.info("Things can fail or get interrupted, so use a try block.")
-    logger.info("Moved .env variables into a utils config module.")
+    logger.info("Starting message consumer process.")
 
-    logger.info("STEP 1. Read environment variables using new config functions.")
     try:
-        interval_secs: int = config.get_message_interval_seconds_as_int()
-        live_data_path: pathlib.Path = config.get_live_data_path()
-        sqlite_path: pathlib.Path = config.get_sqlite_path()
-        logger.info("SUCCESS: Read environment variables.")
+        # Read environment variables
+        interval_secs = config.get_message_interval_seconds_as_int()
+        live_data_path = config.get_live_data_path()
+        sqlite_path = config.get_sqlite_path()
     except Exception as e:
         logger.error(f"ERROR: Failed to read environment variables: {e}")
         sys.exit(1)
 
-    logger.info("STEP 2. Delete any prior database file for a fresh start.")
+    # Delete previous database file if it exists
     if sqlite_path.exists():
         try:
             sqlite_path.unlink()
-            logger.info("SUCCESS: Deleted database file.")
         except Exception as e:
-            logger.error(f"ERROR: Failed to delete DB file: {e}")
+            logger.error(f"ERROR: Failed to delete old DB file: {e}")
             sys.exit(2)
 
-    logger.info("STEP 3. Initialize a new database with an empty table.")
-    try:
-        init_db(sqlite_path)
-    except Exception as e:
-        logger.error(f"ERROR: Failed to create db table: {e}")
-        sys.exit(3)
+    # Initialize a fresh database
+    init_db(sqlite_path)
 
-    logger.info("STEP 4. Begin consuming and storing messages.")
-    try:
-        consume_messages_from_file(live_data_path, sqlite_path, interval_secs, 0)
-    except KeyboardInterrupt:
-        logger.warning("Consumer interrupted by user.")
-    except Exception as e:
-        logger.error(f"ERROR: Unexpected error: {e}")
-    finally:
-        logger.info("TRY/FINALLY: Consumer shutting down.")
+    # Start consuming and processing messages
+    consume_messages_from_file(live_data_path, sqlite_path, interval_secs, 0)
 
 
 #####################################
-# Conditional Execution
+# Conditional Execution Block
 #####################################
 
 if __name__ == "__main__":

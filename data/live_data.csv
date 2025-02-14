@@ -1,0 +1,12 @@
+message,author,timestamp,category,sentiment,keyword_mentioned
+I just tried Python! It was boring.,Charlie,2025-02-14 16:07:38,tech,0.78,Python
+I just shared a meme! It was boring.,Eve,2025-02-14 16:07:43,humor,0.29,meme
+I just tried Python! It was funny.,Alice,2025-02-14 16:07:48,tech,0.22,Python
+I just tried Python! It was exciting.,Bob,2025-02-14 16:07:53,tech,0.47,Python
+I just found an app! It was amazing.,Bob,2025-02-14 16:07:58,other,0.8,other
+I just found a trick! It was weird.,Alice,2025-02-14 16:08:03,other,0.42,other
+I just shared Python! It was exciting.,Alice,2025-02-14 16:08:08,tech,0.51,Python
+I just loved a story! It was funny.,Charlie,2025-02-14 16:08:13,other,0.07,other
+I just saw Python! It was exciting.,Charlie,2025-02-14 16:08:18,tech,0.53,Python
+I just found game! It was amazing.,Eve,2025-02-14 16:08:23,gaming,0.06,game
+I just saw an app! It was weird.,Eve,2025-02-14 16:08:28,other,0.37,other
