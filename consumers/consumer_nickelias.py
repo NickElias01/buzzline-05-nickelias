@@ -35,13 +35,14 @@ import os
 # import from local modules
 import utils.utils_config as config
 from utils.utils_logger import logger
-from .db_sqlite_case import init_db, insert_message
+
 
 #####################################
 # Defining file path for CSV
 # #####################################
 
-CSV_FILE_PATH = "live_data.csv"
+# Define the path for the CSV file inside the "data" folder
+CSV_FILE_PATH = pathlib.Path("data") / "live_data.csv"
 
 #####################################
 # Function to process a single message
@@ -63,7 +64,6 @@ def process_message(message: dict) -> None:
             "category": message.get("category"),
             "sentiment": float(message.get("sentiment", 0.0)),
             "keyword_mentioned": message.get("keyword_mentioned"),
-            "message_length": int(message.get("message_length", 0)),
         }
         logger.info(f"Processed message: {processed_message}")
         return processed_message
@@ -87,7 +87,7 @@ def append_to_csv(processed_message):
             writer = csv.writer(file)
             # Write header only if file doesn't exist
             if not file_exists:
-                writer.writerow(["message", "author", "timestamp", "category", "sentiment", "keyword_mentioned", "message_length"])
+                writer.writerow(["message", "author", "timestamp", "category", "sentiment", "keyword_mentioned"])
             writer.writerow([
                 processed_message["message"],
                 processed_message["author"],
@@ -167,8 +167,8 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
             cursor.execute(
                 """
                 INSERT INTO streamed_messages (
-                    message, author, timestamp, category, sentiment, keyword_mentioned, message_length
-                ) VALUES (?, ?, ?, ?, ?, ?, ?)
+                    message, author, timestamp, category, sentiment, keyword_mentioned
+                ) VALUES (?, ?, ?, ?, ?, ?)
                 """,
                 (
                     message["message"],
