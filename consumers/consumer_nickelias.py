@@ -28,6 +28,7 @@ import json
 import pathlib
 import sys
 import time
+import csv
 
 # import from local modules
 import utils.utils_config as config
@@ -35,9 +36,14 @@ from utils.utils_logger import logger
 from .db_sqlite_case import init_db, insert_message
 
 #####################################
-# Function to process a single message
+# Defining file path for CSV
 # #####################################
 
+CSV_FILE_PATH = "live_data.csv"
+
+#####################################
+# Function to process a single message
+# #####################################
 
 def process_message(message: str) -> None:
     """
@@ -126,6 +132,27 @@ def consume_messages_from_file(live_data_path, sql_path, interval_secs, last_pos
             sys.exit(11)
 
         time.sleep(interval_secs)
+
+
+#####################################
+# Function to write data to CSV
+# #####################################
+
+def write_to_csv(processed_message):
+    """Append new messages to a CSV file."""
+    file_exists = pathlib.Path(CSV_FILE_PATH).exists()
+    
+    with open(CSV_FILE_PATH, "a", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=[
+            "message", "author", "timestamp", "category", 
+            "sentiment", "keyword_mentioned", "message_length"
+        ])
+        
+        # Write headers if file is new
+        if not file_exists:
+            writer.writeheader()
+        
+        writer.writerow(processed_message)
 
 
 #####################################
