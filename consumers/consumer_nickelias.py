@@ -71,6 +71,27 @@ def process_message(message: str) -> None:
 
 
 #####################################
+# Function to write data to CSV
+# #####################################
+
+def write_to_csv(processed_message):
+    """Append new messages to a CSV file."""
+    file_exists = pathlib.Path(CSV_FILE_PATH).exists()
+    
+    with open(CSV_FILE_PATH, "a", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=[
+            "message", "author", "timestamp", "category", 
+            "sentiment", "keyword_mentioned", "message_length"
+        ])
+        
+        # Write headers if file is new
+        if not file_exists:
+            writer.writeheader()
+        
+        writer.writerow(processed_message)
+        
+
+#####################################
 # Consume Messages from Live Data File
 #####################################
 
@@ -117,6 +138,7 @@ def consume_messages_from_file(live_data_path, sql_path, interval_secs, last_pos
                         # If we have a processed message, insert it into the database
                         if processed_message:
                             insert_message(processed_message, sql_path)
+                            write_to_csv(processed_message)  # Append to CSV
 
                 # Update the last position that's been read to the current file position
                 last_position = file.tell()
@@ -134,25 +156,7 @@ def consume_messages_from_file(live_data_path, sql_path, interval_secs, last_pos
         time.sleep(interval_secs)
 
 
-#####################################
-# Function to write data to CSV
-# #####################################
 
-def write_to_csv(processed_message):
-    """Append new messages to a CSV file."""
-    file_exists = pathlib.Path(CSV_FILE_PATH).exists()
-    
-    with open(CSV_FILE_PATH, "a", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=[
-            "message", "author", "timestamp", "category", 
-            "sentiment", "keyword_mentioned", "message_length"
-        ])
-        
-        # Write headers if file is new
-        if not file_exists:
-            writer.writeheader()
-        
-        writer.writerow(processed_message)
 
 
 #####################################
